@@ -1,1 +1,156 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="./favicon.ico"/><meta property="og:image" content="./images/Preview.png"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><link rel="icon" href="./favicon.ico"/><meta name="description" content="Game development portfolio"/><link rel="manifest" href="./manifest.json"/><link rel="apple-touch-icon" href="./logo192.png"/><title>Title</title><script defer="defer" src="./static/js/main.27d60582.js"></script><link href="./static/css/main.d0eac410.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="./favicon.ico"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="theme-color" content="#0b0c15"/>
+    <title>VViper Productions | Command</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="./static/css/main.d0eac410.css" rel="stylesheet">
+
+    <style>
+      /* --- CORE VARIABLES --- */
+      :root {
+        --bg-dark: #0b0c15;
+        --neon-cyan: #00f3ff;
+        --glass-bg: rgba(15, 20, 30, 0.90);
+        --glass-border: 1px solid rgba(0, 243, 255, 0.2);
+        --separator-color: rgba(0, 243, 255, 0.4);
+      }
+
+      body {
+        margin: 0; background-color: var(--bg-dark); color: #fff;
+        font-family: 'Rajdhani', sans-serif; overflow-x: hidden; width: 100vw;
+        padding-bottom: 120px;
+      }
+
+      /* --- 1. GLOBAL CONTAINER --- */
+      #root {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+      }
+
+      /* --- 2. MASTER BOX (One big container) --- */
+      #root > div {
+        width: 100% !important;
+        max-width: 1000px !important;
+        margin-left: auto !important; margin-right: auto !important;
+        background: var(--glass-bg) !important;
+        border: var(--glass-border) !important;
+        border-radius: 20px !important;
+        padding: 40px !important;
+        box-shadow: 0 0 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(0, 243, 255, 0.05) !important;
+        backdrop-filter: blur(10px) !important;
+      }
+
+      /* --- 3. RESET INTERNAL ELEMENTS --- */
+      div[class*="sc-"], section, .card {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        flex-wrap: wrap !important;
+        overflow-wrap: break-word !important;
+        position: relative; /* Needed for separator */
+      }
+
+      /* >>> THE FIX: TARGETED SEPARATOR <<< */
+      /* Only target direct children (The Project Cards) */
+      /* We use > * > * to select the 'cards' inside the 'list' container */
+      #root > div > div > div[class*="sc-"]:not(:last-child) {
+        border-bottom: 1px solid var(--separator-color) !important;
+        padding-bottom: 40px !important;
+        margin-bottom: 40px !important;
+      }
+      
+      /* Also add a glow to that border */
+      #root > div > div > div[class*="sc-"]:not(:last-child)::after {
+        content: ""; display: block; width: 100%; height: 1px;
+        background: inherit;
+        box-shadow: 0 0 8px var(--neon-cyan);
+        opacity: 0.5;
+      }
+
+      div[style*="display: flex"], div[class*="row"] {
+        flex-wrap: wrap !important;
+      }
+
+      /* --- 4. TEXT & ALIGNMENT --- */
+      h1, h2, h3 { 
+        font-family: 'Orbitron', sans-serif !important; 
+        color: #fff !important; text-align: center !important;
+        text-shadow: 0 0 10px var(--neon-cyan);
+      }
+      p, li { 
+        font-size: 1.1rem !important; color: #ccc !important; 
+        text-align: center; max-width: 800px; margin: 0 auto 1rem auto !important;
+      }
+
+      /* --- 5. IMAGE FIXES --- */
+      img { max-width: 100% !important; height: auto !important; border-radius: 8px; }
+      
+      #root > div > div > div > div:nth-child(1) > img {
+        display: block !important; width: 140px !important; height: 140px !important;
+        margin: 0 auto 20px auto !important;
+        content: url('https://api.dicebear.com/7.x/bottts/svg?seed=VViper&backgroundColor=00f3ff');
+        border-radius: 50%; border: 2px solid var(--neon-cyan);
+      }
+
+      /* --- 6. SOCIAL WIDGET --- */
+      div[class*="sc-gtLWhw"] {
+        justify-content: center !important; gap: 20px !important; margin: 20px auto !important;
+        border-bottom: none !important; /* Ensure no line under social icons */
+        padding-bottom: 0 !important;
+      }
+
+      /* --- 7. CONSOLE --- */
+      .command-console {
+        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+        width: 90%; max-width: 600px; height: 60px;
+        background: rgba(10, 10, 10, 0.95); border: 1px solid var(--neon-cyan);
+        border-radius: 30px; display: flex; align-items: center; justify-content: space-between;
+        padding: 0 25px; z-index: 9999; box-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
+      }
+      .console-brand { font-family: 'Orbitron', sans-serif; font-weight: 700; color: #fff; }
+      .console-brand span { color: var(--neon-cyan); }
+      .console-status { font-size: 0.8rem; color: #aaa; display: flex; align-items: center; gap: 8px; }
+      .status-dot { width: 8px; height: 8px; background: #0f0; border-radius: 50%; box-shadow: 0 0 5px #0f0; animation: blink 2s infinite; }
+      @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+      /* --- 8. BACKGROUND --- */
+      .aurora-bg {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+        background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0b0c15 100%);
+      }
+      .aurora-bg::after {
+        content: ""; position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+    </style>
+
+    <script defer="defer" src="./static/js/main.27d60582.js"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="aurora-bg"></div>
+    <div id="root"></div>
+    <div class="command-console">
+      <div class="console-brand">VViper<span>PRODUCTIONS</span></div>
+      <div class="console-status"><div class="status-dot"></div>ONLINE</div>
+    </div>
+  </body>
+</html>
