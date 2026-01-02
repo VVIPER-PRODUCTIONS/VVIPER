@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
+    <link rel="icon" href="./favicon.ico"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="theme-color" content="#0b0c15"/>
     <title>VViper Productions | Command</title>
@@ -39,7 +40,7 @@
         overflow: hidden !important;
       }
 
-      /* --- 2. MASTER BOX (One big container) --- */
+      /* --- 2. MASTER BOX --- */
       #root > div {
         width: 100% !important;
         max-width: 1000px !important;
@@ -52,7 +53,13 @@
         backdrop-filter: blur(10px) !important;
       }
 
-      /* --- 3. RESET INTERNAL ELEMENTS --- */
+      /* --- 3. ELEMENT HIDING FIX --- */
+      /* This specifically hides the favicon image inside the body */
+      img[src*="favicon.ico"], .sc-jSSkKI {
+        display: none !important;
+      }
+
+      /* --- 4. RESET INTERNAL ELEMENTS --- */
       div[class*="sc-"], section, .card {
         background: transparent !important;
         border: none !important;
@@ -62,31 +69,25 @@
         box-sizing: border-box !important;
         flex-wrap: wrap !important;
         overflow-wrap: break-word !important;
-        position: relative; /* Needed for separator */
+        position: relative;
       }
 
-      /* >>> THE FIX: TARGETED SEPARATOR <<< */
-      /* Only target direct children (The Project Cards) */
-      /* We use > * > * to select the 'cards' inside the 'list' container */
+      /* PROJECT SEPARATOR LINE */
       #root > div > div > div[class*="sc-"]:not(:last-child) {
         border-bottom: 1px solid var(--separator-color) !important;
         padding-bottom: 40px !important;
         margin-bottom: 40px !important;
       }
-      
-      /* Also add a glow to that border */
       #root > div > div > div[class*="sc-"]:not(:last-child)::after {
         content: ""; display: block; width: 100%; height: 1px;
-        background: inherit;
-        box-shadow: 0 0 8px var(--neon-cyan);
-        opacity: 0.5;
+        background: inherit; box-shadow: 0 0 8px var(--neon-cyan); opacity: 0.5;
       }
 
       div[style*="display: flex"], div[class*="row"] {
         flex-wrap: wrap !important;
       }
 
-      /* --- 4. TEXT & ALIGNMENT --- */
+      /* --- 5. TEXT & ALIGNMENT --- */
       h1, h2, h3 { 
         font-family: 'Orbitron', sans-serif !important; 
         color: #fff !important; text-align: center !important;
@@ -97,7 +98,7 @@
         text-align: center; max-width: 800px; margin: 0 auto 1rem auto !important;
       }
 
-      /* --- 5. IMAGE FIXES --- */
+      /* --- 6. IMAGE FIXES --- */
       img { max-width: 100% !important; height: auto !important; border-radius: 8px; }
       
       #root > div > div > div > div:nth-child(1) > img {
@@ -107,14 +108,13 @@
         border-radius: 50%; border: 2px solid var(--neon-cyan);
       }
 
-      /* --- 6. SOCIAL WIDGET --- */
+      /* --- 7. SOCIAL WIDGET --- */
       div[class*="sc-gtLWhw"] {
         justify-content: center !important; gap: 20px !important; margin: 20px auto !important;
-        border-bottom: none !important; /* Ensure no line under social icons */
-        padding-bottom: 0 !important;
+        border-bottom: none !important; padding-bottom: 0 !important;
       }
 
-      /* --- 7. CONSOLE --- */
+      /* --- 8. CONSOLE --- */
       .command-console {
         position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
         width: 90%; max-width: 600px; height: 60px;
@@ -128,7 +128,7 @@
       .status-dot { width: 8px; height: 8px; background: #0f0; border-radius: 50%; box-shadow: 0 0 5px #0f0; animation: blink 2s infinite; }
       @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-      /* --- 8. BACKGROUND --- */
+      /* --- 9. BACKGROUND --- */
       .aurora-bg {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
         background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0b0c15 100%);
